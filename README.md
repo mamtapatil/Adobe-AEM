@@ -114,6 +114,6 @@ scrape_configs:
  4. Use the RomanNumeral-1630564521149.json to import the dashboard.<br>
  5. The panels give the information on the request frequency, ltenct, exception frequency.<br>
 
-<h3>Docker image</h3>
 <hr>
+<h3>Docker image</h3>
 mamtapatil/adobe-aem
