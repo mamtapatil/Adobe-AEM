@@ -10,6 +10,17 @@ http://localhost:8080/romannumeral?query={integer}
 <br><br>
 <b>Constraints</b><br>
 The input should be an integer in the range 1 - 3999. Anything else will display an error message.
+<br>
+<h4>Examples</h4>
+
+* http://localhost:8080/romannumeral?query=1    
+  Output: {"input":1,"output":"I"}
+* http://localhost:8080/romannumeral?query=678  
+  Output: {"input":678,"output":"DCLXXVIII"}
+* http://localhost:8080/romannumeral?query=abc  
+  Output: {"error":"Invalid input. Please provide a number in the range 1 - 3999."}
+* http://localhost:8080/romannumeral?query=5000 
+  Output: {"error":"Only numbers within the range 1 - 3999 are allowed"} 
 
 <h3>Prerequisites</h3>
 <hr>
