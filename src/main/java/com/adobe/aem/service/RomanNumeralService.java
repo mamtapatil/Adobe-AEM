@@ -6,21 +6,26 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-
-import com.adobe.aem.controller.RomanNumeralController;
 import com.adobe.aem.exceptions.OutOfRangeException;
+
+/**
+ * Service to convert number to roman numeral
+ * 
+ * @author Mamta Patil
+ * @version 1.0
+ */
 
 @Service
 public class RomanNumeralService {
-	
+
 	public static final int MIN_RANGE = 1;
 
 	public static final int MAX_RANGE = 3999;
-	
-	public static final Map<Integer,String> romanNumberMap = new LinkedHashMap<Integer,String>();
-	
+
+	public static final Map<Integer, String> romanNumberMap = new LinkedHashMap<Integer, String>();
+
 	Logger logger = LoggerFactory.getLogger(RomanNumeralService.class);
-	
+
 	static {
 		romanNumberMap.put(1000, "M");
 		romanNumberMap.put(900, "CM");
@@ -36,14 +41,23 @@ public class RomanNumeralService {
 		romanNumberMap.put(4, "IV");
 		romanNumberMap.put(1, "I");
 	}
-	
+
+	/**
+	 * This method converts integer to Roman numerals in the range 1-3999
+	 * 
+	 * @param number
+	 * @return String - returns the corresponding Roman numeral of the number
+	 * @exception OutOfRangeException - On out of range values
+	 * @see OutOfRangeException
+	 */
 	public String convertToRomanNumber(int number) {
 		StringBuilder output = new StringBuilder();
 		logger.info("Converting " + number + " to roman numeral.");
 		if (number < MIN_RANGE || number > MAX_RANGE) {
-			throw new OutOfRangeException("Only numbers within the range " + MIN_RANGE + " - " + MAX_RANGE + " are allowed");
+			throw new OutOfRangeException(
+					"Only numbers within the range " + MIN_RANGE + " - " + MAX_RANGE + " are allowed");
 		}
-		
+
 		for (int key : romanNumberMap.keySet()) {
 			while (number >= key) {
 				number -= key;
@@ -53,7 +67,7 @@ public class RomanNumeralService {
 				break;
 			}
 		}
-		
+
 		return output.toString();
 	}
 }
