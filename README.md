@@ -37,6 +37,7 @@ To run the JUnit test cases, right click on the RomanNumeralControllerTest.java 
 ├── README.md
 ├── bin
 ├── build.gradle
+|── Dockerfile
 ├── gradle
 │   └── wrapper
 │       ├── gradle-wrapper.jar
@@ -112,3 +113,7 @@ scrape_configs:
  3. Click Dashboards - > manage - > Import<br>
  4. Use the RomanNumeral-1630564521149.json to import the dashboard.<br>
  5. The panels give the information on the request frequency, ltenct, exception frequency.<br>
+
+<h3>Docker image</h3>
+<hr>
+mamtapatil/adobe-aem
