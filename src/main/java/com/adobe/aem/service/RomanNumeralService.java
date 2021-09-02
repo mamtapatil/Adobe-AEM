@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import com.adobe.aem.exceptions.OutOfRangeException;
 
@@ -18,9 +19,11 @@ import com.adobe.aem.exceptions.OutOfRangeException;
 @Service
 public class RomanNumeralService {
 
-	public static final int MIN_RANGE = 1;
+	@Value("${com.adobe.aem.romanNumeralService.minRange}")
+	public int minRange;
 
-	public static final int MAX_RANGE = 3999;
+	@Value("${com.adobe.aem.romanNumeralService.maxRange}")
+	public int maxRange;
 
 	public static final Map<Integer, String> romanNumberMap = new LinkedHashMap<Integer, String>();
 
@@ -53,9 +56,9 @@ public class RomanNumeralService {
 	public String convertToRomanNumber(int number) {
 		StringBuilder output = new StringBuilder();
 		logger.info("Converting " + number + " to roman numeral.");
-		if (number < MIN_RANGE || number > MAX_RANGE) {
+		if (number < minRange || number > maxRange) {
 			throw new OutOfRangeException(
-					"Only numbers within the range " + MIN_RANGE + " - " + MAX_RANGE + " are allowed");
+					"Only numbers within the range " + minRange + " - " + maxRange + " are allowed");
 		}
 
 		for (int key : romanNumberMap.keySet()) {
